@@ -100,9 +100,9 @@ const DSA = () => {
     if (!data) return;
 
     setDisplayForm(true);
-    setTitle(data[0]?.title);
-    setStatus(data[0]?.status);
-    setDifficulty(data[0]?.difficulty);
+    setTitle(data?.title);
+    setStatus(data?.status);
+    setDifficulty(data?.difficulty);
     setDsaId(id);
   }
 
