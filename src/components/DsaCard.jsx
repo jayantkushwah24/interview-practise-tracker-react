@@ -1,37 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 
 const DsaCard = ({ onClick }) => {
-  const [totalDsa, setTotalDsa] = useState(0);
-  const [solvedDsa, setSolvedDsa] = useState(0);
-  const [unsolvedDsa, setUnsolvedDsa] = useState(0);
-  const [progress, setProgress] = useState(0);
-
-  const dsaData = JSON.parse(localStorage.getItem("dsa_data"));
-
-  function calculateProgress() {
-    let total = dsaData.length;
-    setTotalDsa(total);
-
-    let solved = dsaData.filter((dsa) => dsa.status === "completed").length;
-    setSolvedDsa(solved);
-
-    setUnsolvedDsa(total - solved);
-  }
+  const [dsaData, setDsaData] = useState(() => {
+    return JSON.parse(localStorage.getItem("dsa_data")) || [];
+  });
 
   useEffect(() => {
-    calculateProgress();
+    setDsaData(JSON.parse(localStorage.getItem("dsa_data")) || []);
   }, []);
+
+  const total = dsaData.length;
+  const solved = dsaData.filter((dsa) => dsa.status === "completed").length;
+  const unsolved = total - solved;
+  const progress = total > 0 ? Math.floor((solved / total) * 100) : 0;
 
   return (
     <div className="border p-4 cursor-pointer" onClick={onClick}>
       <h1 className="text-center bg-amber-100">DSA (Leetcode)</h1>
-      <p>Total DSA Questions: {totalDsa}</p>
-      <p>Solved DSA Questions: {solvedDsa}</p>
-      <p>Unsolved DSA Questions: {unsolvedDsa}</p>
-      <p>Progress: {Math.floor((solvedDsa / totalDsa) * 100)}%</p>
+      <p>Total DSA Questions: {total}</p>
+      <p>Solved DSA Questions: {solved}</p>
+      <p>Unsolved DSA Questions: {unsolved}</p>
+      <p>Progress: {progress}%</p>
     </div>
   );
 };
 
-export default DsaCard;
+export default DsaCard;   
