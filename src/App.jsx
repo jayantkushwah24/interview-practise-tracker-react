@@ -1,4 +1,3 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Dashboard from "./Pages/Dashboard";
 import DSA from "./Pages/DSA";
