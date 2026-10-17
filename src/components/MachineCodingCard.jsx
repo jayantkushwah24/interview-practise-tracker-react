@@ -1,8 +1,8 @@
 import React from "react";
 
-const MahineCodingCard = () => {
+const MachineCodingCard = ({ onClick }) => {
   return (
-    <div className="border p-4 cursor-pointer">
+    <div className="border p-4 cursor-pointer" onClick={onClick}>
       <h1 className="text-center bg-amber-100 ">Machine Coding Round</h1>
       <p>Total: </p>
       <p>Solved: </p>
@@ -11,4 +11,4 @@ const MahineCodingCard = () => {
   );
 };
 
-export default MahineCodingCard;
+export default MachineCodingCard;
