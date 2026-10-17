@@ -124,7 +124,10 @@ const DSA = () => {
           </div>
           <button
             type="button"
-            onClick={() => setDisplayForm(true)}
+            onClick={() => {
+              if (dsaId !== null) resetForm();
+              setDisplayForm(true);
+            }}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             <span aria-hidden="true">+</span> Add question

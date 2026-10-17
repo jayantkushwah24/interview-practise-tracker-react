@@ -116,7 +116,7 @@ const Git = () => {
           <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">Git & GitHub</h1>
           <p className="mt-2 text-sm text-slate-500">Get comfortable with the tools behind your code.</p>
         </div>
-        <button onClick={() => setDisplayForm(true)} className="rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:bg-indigo-700">+ Add question</button>
+        <button onClick={() => { if (gitId !== null) resetForm(); setDisplayForm(true); }} className="rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:bg-indigo-700">+ Add question</button>
       </header>
 
       <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
@@ -200,7 +200,7 @@ const Git = () => {
                 className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 font-normal outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
               >
                 <option value="pending">Pending</option>
-                <option value="in-progress">In progess</option>
+                <option value="in-progress">In progress</option>
                 <option value="completed">Completed</option>
               </select>
             </label>
